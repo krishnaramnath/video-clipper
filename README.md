@@ -5,20 +5,7 @@ Create an application that allows a user to slice­up a video (sample video:
 http://grochtdreis.de/fuer­jsfiddle/video/sintel_trailer­480.mp4) into clips.
 
 
-As part of this application, use at least one​ of the following frameworks to facilitate
-
-development – however you may also use any other tools to help complete the project:
-
-
-- AngularJS
-
-- Angular 2
-
-- Ember
-
-- ReactJS
-
-- AureliaJS
+I used AngularJS to facilitate development:
 
 
 Mandatory Features
