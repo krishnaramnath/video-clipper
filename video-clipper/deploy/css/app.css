@@ -293,6 +293,7 @@ section.errorMsg {
     color: #ffffff;
     line-height: 20px;
     padding-top: 13px;
+    text-align: center;
 }
 section.errorMsg span.start {
     color: #58b058;font-size
