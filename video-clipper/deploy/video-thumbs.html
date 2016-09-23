@@ -1,0 +1,35 @@
+<section class="thumbs" ng-if="!clipper.isMakeclipOpen">
+  <!-- <form ng-if="!thumbs.showData"id="form3" name="form3">
+    <label>
+      {{thumbs.buttoncopy[0]}}
+      <input type="checkbox" name="playall" ng-model="clipper.playall" >
+    </label>
+  </form>
+  <form ng-if="thumbs.showData" id="form4" name="form4">
+    <label>
+      {{thumbs.buttoncopy[1]}}
+      <input type="checkbox" name="selectall" ng-model="thumbs.selectall" >
+    </label>
+  </form> -->
+  <ul>
+    <li ng-if="!thumbs.showData" class="buttn pos1">
+      <a href="" ng-click="thumbs.showData = true;" class="ng-binding">{{thumbs.buttoncopy[2]}}</a>
+    </li>
+    <li ng-if="thumbs.showData" class="buttn pos1">
+      <a href="" ng-click="thumbs.showData = false;" class="ng-binding">{{thumbs.buttoncopy[3]}}</a>
+    </li>
+  </ul>
+  <div class="playlist">
+	  <div ng-if="!thumbs.showData" class="thumb" ng-repeat="thumb in thumbs.clips" ng-class-even="'dark'" ng-click="clipper.setActive(thumb.num)" ng-class="{active: clipper.isActive(thumb.num)}">
+		  <div class="labels">
+		    {{thumb.num}}<br/>
+		  </div>
+		  <div class="info">
+		    {{thumb.name}}<br/>
+		  </div>
+	  </div>
+  </div>
+  <div ng-if="thumbs.showData">
+    <blockquote class="clipdata" select-on-click >{{thumbs.clips}}</blockquote>
+  </div>
+</section>

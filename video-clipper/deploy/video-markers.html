@@ -1,0 +1,23 @@
+<div class="bar dark markers" ng-if="!clipper.isMakeclipOpen">
+  <section class="markers">
+	  <ul class="markers">
+	    <li ng-repeat="marker in markers.clips track by $index" ng-style="marker.style" ng-class="{active: clipper.isActive(marker.num)}">{{marker.num}}</li>
+	  </ul>
+  </section>
+  <section class="buttn">
+    <ul>
+      <li  class="buttn pos1">
+        <a href ng-click="clipper.isMakeclipOpen = true; clipper.setState('make');">{{markers.buttoncopy[0]}}</a>
+      </li>
+    </ul>
+  </section>
+</div>
+<div ng-if="!clipper.isActive(0) && !clipper.isMakeclipOpen" class="bar dark markers" ng-if="!clipper.isMakeclipOpen">
+  <section class="buttn">
+    <ul>
+      <li class="buttn pos1">
+        <a href ng-click="clipper.isMakeclipOpen = true; clipper.setState('edit');">{{markers.buttoncopy[1]}}</a>
+      </li>
+    </ul>
+  </section>
+</div>

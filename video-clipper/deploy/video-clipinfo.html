@@ -1,0 +1,17 @@
+<section class="clipInfo" ng-if="clipper.isMakeclipOpen">
+  <div class="labels">
+    {{clipper.tempClip.num}}<br/>
+    start:<br/>
+    stop:<br/>
+    duration:<br/>
+    tags:
+    <ul>
+      <li ng-click="clipper.removeTag($index);" ng-repeat="t in clipper.tempClip.tags track by $index">{{t}}&nbsp;&nbsp;<span class="xbtn">x</span></li>
+    </ul>
+  </div>
+  <div class="info">
+    {{clipper.tempClip.name}}<br/>
+    {{clipper.tempClip.start | currency:''}}<br/>
+    {{clipper.tempClip.stop | currency:''}}<br/>
+    <span ng-if="(clipper.tempClip.stop - clipper.tempClip.start) > 0">{{clipper.tempClip.stop - clipper.tempClip.start | currency:''}}</span><br/>
+</section>

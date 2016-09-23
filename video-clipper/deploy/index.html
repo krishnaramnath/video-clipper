@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html ng-app="videoClipper">
+  <head>
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/css/app.css" />
+    <script type="text/javascript" src="/lib/angular.min.js"></script>
+    <script type="text/javascript" src="/js/video-clipper.js"></script>
+    <script type="text/javascript" src="/js/app.js"></script>
+  </head>
+
+  <body ng-controller="ClipperController as clipper">
+    <div class="bg">
+      <!--  Video Clipper Container  -->
+      <div id="container" class="list-group container">
+        <p>source:  {{clipper.srcfile}}</p>
+        <section class="player" ng-focus="clipper.scrollToTop();">
+          <div ng-if="clipper.isLoading();" class="loadscrn">
+            <img class="loadanim" src="/img/balls.gif">
+          </div>
+          <video id="fullvideo" controls="" preload="metadata" width="100%">
+            <source ng-src="{{clipper.srcfile}}" type="video/mp4;codecs=&quot;avc1.42E01E, mp4a.40.2&quot;" data-original="{{clipper.srcfile}}" >
+          </video>
+          <video-markers></video-markers>
+          <video-makeclip></video-makeclip>
+        </section>
+        <!--<div ng-if="!clipper.isMakeclipOpen && clipper.clips.length > 1" ng-keyup="$scope.onKeyUp($event)" class="hotkeys">Tap/click name in list or use keypad (8) and (2) to tab thru clips. </div> -->
+        <video-thumbs></video-thumbs>
+        <video-clipinfo></video-clipinfo>
+      </div>
+    </div>
+  </body>
+</html>

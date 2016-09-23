@@ -1,0 +1,54 @@
+<section class="makeclip" ng-if="clipper.isMakeclipOpen">
+  <div class="bar dark">
+    <section class="markers">
+	  <ul class="markers">
+	    <li ng-style="makeclip.markers[0].style" ng-click="makeclip.updateVideoPos(clipper.tempClip.stop);">{{makeclip.markers[0].label}}</li>
+	    <li ng-style="makeclip.markers[1].style" ng-click="makeclip.updateVideoPos(clipper.tempClip.start);">{{makeclip.markers[1].label}}</li>
+	  </ul>
+  </section>
+  </div>
+  <div class="bar light">
+    <section class="txtfield">
+      <form id="form1" name="form1">
+        <label>
+          name:
+          <input type="text" name="userName" ng-model="clipper.tempClip.name" maxlength="15" >
+        </label>
+      </form>
+    </section>
+    <section class="buttn">
+      <ul>
+        <li id="b1" class="buttn">
+          <a href ng-click="clipper.tempClip.start = makeclip.getTime(); clipper.tempClip.style = makeclip.getStyle(); makeclip.updateMarkerPos(1);">{{makeclip.buttoncopy[0]}}</a>
+        </li>
+        <li id="b2" class="buttn">
+          <a href ng-click="clipper.tempClip.stop = makeclip.getTime(); makeclip.updateMarkerPos(0);">{{makeclip.buttoncopy[1]}}</a>
+        </li>
+      </ul>
+    </section>
+  </div>
+  <div class="bar dark" ng-init="tag">
+    <section class="txtfield">
+      <form id="form2" name="form2">
+        <label>
+          tags:
+          <input type="text" name="tags" ng-model="tag" maxlength="10">
+        </label>
+      </form>
+    </section>
+    <section class="buttn">
+      <ul>
+        <li id="b3" class="buttn">
+          <a href ng-click="clipper.tempClip.tags.push(tag); tag =''">{{makeclip.buttoncopy[2]}}</a>
+        </li>
+        <li id="b4" class="buttn">
+          <a href ng-click="clipper.delete(); makeclip.resetMarkers(); clipper.isMakeclipOpen = false;">{{makeclip.buttoncopy[3]}}</a>
+        </li>
+        <li id="b5" class="buttn">
+          <a href ng-click="makeclip.saveClip(clipper.tempClip); clipper.errorCheck();">{{makeclip.buttoncopy[4]}}</a>
+        </li>
+      </ul>
+    </section>
+  </div>
+  <section class="errorMsg" ng-click="makeclip.error=false;" ng-if="makeclip.error" ><span class='stop'>Stop</span> time must be greater than <span class='start'>Start</span> time.</section>
+</section>
