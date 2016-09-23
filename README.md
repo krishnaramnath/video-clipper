@@ -49,7 +49,7 @@ Bonus (Completed)
 - The ability to reuse the the player and playlist on another page without the editing capabilities.
 
 
-Design.pdf contains wire-frames, brief software architecture notes, designs
+design.pdf contains wire-frames, brief software architecture notes, designs
 
 
 
