@@ -2,6 +2,9 @@ body {
   background-color: #f29625;
   color: #0d425b;
 }
+p.msg {
+    float: right;
+}
 .bg {
 	background-color: #ffffff;
 	position: relative;
@@ -33,6 +36,7 @@ video {
     position: relative;
     right: 0;
     border: 1px solid #999999;
+    float: right;
 }
 div.hotkeys {
     text-align: -webkit-right;
