@@ -7,21 +7,24 @@
         restrict: 'E',
         templateUrl: "video-markers.html",
         controller: ['videoInfo', function(videoInfo) {
-          var markers = this,
-            i = 0;
-            lgth = "",
-            pct = "",
-            mrkrCtrCorrect = 6;
+          var markers = this;
           markers.buttoncopy = videoInfo.videoMarkers.buttoncopy;
           markers.clips = videoInfo.clips;
           lgth = markers.clips.length;
 
-          // position markers
-          for (i=0; i<lgth; i++) {
-            pct = ((100*videoInfo.clips[i].start/videoInfo.clips[0].duration) - mrkrCtrCorrect) + '%';
-            videoInfo.clips[i].style =  {'left' : pct};
-          };
-          markers.clips = videoInfo.clips;
+          markers.positionMarkers = function() {
+            var i = 0,
+              lgth = "",
+              pct = "",
+              mrkrCtrCorrect = 6;
+            for (i=0; i<lgth; i++) {
+              pct = ((100*videoInfo.clips[i].start/videoInfo.clips[0].duration) - mrkrCtrCorrect) + '%';
+              videoInfo.clips[i].style =  {'left' : pct};
+            };
+            markers.clips = videoInfo.clips;
+          }
+
+          markers.positionMarkers();
         }],
         controllerAs: "markers"
       };
