@@ -39,6 +39,8 @@ Bonus (Completed)
 
 design.pdf contains wire-frames, brief software architecture notes, designs
 
+# installation notes
 
+***** video file in this example is .mp4; make sure server environment supports .mp4 video/mpeg MIME type and browser supports playback of .mp4 video files
 
 
