@@ -251,6 +251,7 @@ section.thumbs div.info {
 }
 section.thumbs form#form3, section.thumbs form#form4 {
     font-size: 14px;
+    position: absolute;
 }
 section.thumbs div.playlist {
     position: relative;
