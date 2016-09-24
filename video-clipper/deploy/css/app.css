@@ -32,11 +32,10 @@ video {
 }
 .player {
 	width: 65%;
-    margin: 2% 1%;
-    position: relative;
+    margin: 3% 2%;
+    position: absolute;
     right: 0;
     border: 1px solid #999999;
-    float: right;
 }
 div.hotkeys {
     text-align: -webkit-right;
@@ -247,7 +246,8 @@ section.clipInfo span.xbtn {
     color: #f29625;
 }
 section.thumbs div.info {
-    top: 0%;
+    bottom: 0%;
+    top: inherit;
 }
 section.thumbs form#form3, section.thumbs form#form4 {
     font-size: 14px;

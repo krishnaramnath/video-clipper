@@ -2,7 +2,7 @@
   var app = angular.module('videoClipper', ['video-directives'])
   .factory('videoInfo', [function() {
     return {
-      "srcfile" : "http://grochtdreis.de/fuer-jsfiddle/video/sintel_trailer-480.mp4",
+      "srcfile" : "/media/sintel_trailer-480.mp4",
       "videoMarkers" : {
         "buttoncopy" : [
           "make clip",
@@ -66,10 +66,11 @@
     clipper.fullvideo = document.getElementById('fullvideo');
     
     clipper.fullvideo.addEventListener('loadedmetadata', function (e) {
+      var fullvideo = clipper.fullvideo;
       clipper.loading = false;
       $scope.$apply();
       // store full video duration
-      if (clipper.firstTime == true) {
+      if (clipper.firstTime == true) {      
         clipper.firstTime = false;
         videoInfo.clips[0].stop = videoInfo.clips[0].duration = clipper.fullvideo.duration;
       } else {

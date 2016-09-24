@@ -10,7 +10,7 @@
                 if (!$window.getSelection().toString()) {
                     // Required for mobile Safari
                     this.setSelectionRange(0, this.value.length)
-                }
+                };
             });
         }
       };
@@ -37,7 +37,7 @@
           for (i=0; i<lgth; i++) {
             pct = ((100*videoInfo.clips[i].start/videoInfo.clips[0].duration) - mrkrCtrCorrect) + '%';
             videoInfo.clips[i].style =  {'left' : pct};
-          }
+          };
           markers.clips = videoInfo.clips;
         }],
         controllerAs: "markers"
@@ -56,24 +56,20 @@
           makeclip.fullvideo = document.getElementById('fullvideo');
           makeclip.error = false;
 
-          $scope.$on("updateMarkerPos", function() {
-            makeclip.updateMarkerPos(0);
-            makeclip.updateMarkerPos(1);
-          });
-
           makeclip.getTime = function() {
             return makeclip.fullvideo.currentTime;
           };
 
-          makeclip.updateMarkerPos = function(num) {
+          makeclip.updateMarkerPos = function(num,pos) {
+            console.log();
             var pct = ((100*makeclip.fullvideo.currentTime/videoInfo.clips[0].duration) - makeclip.mrkrCtrCorrect) + '%';
             makeclip.markers[num].style = {'left' : pct};
-          }
+          };
 
           makeclip.updateVideoPos = function(time) {
             makeclip.fullvideo.pause();
             makeclip.fullvideo.currentTime = time;
-          }
+          };
 
           makeclip.saveClip = function(clip) {
             if (clip.stop <= clip.start) {
@@ -87,28 +83,28 @@
               } else {
                 // if view/state is 'edit clip' replace current clip with temp clip
                 videoInfo.clips[clip.num]= clip;
-              }
+              };
               makeclip.resetMarkers();
               makeclip.cleanup();
-            }
-          }
+            };
+          };
 
           makeclip.cleanup = function() {
             for (var i = 0; i < videoInfo.clips.length; i++) {
               if (videoInfo.clips[i] == null) {
                 videoInfo.clips.splice(i, 1);
-              }
-            }
-          }
+              };
+            };
+          };
 
           makeclip.getStyle = function() {
             var pct = ((100*makeclip.fullvideo.currentTime/videoInfo.clips[0].duration) - makeclip.mrkrCtrCorrect) + '%';
             return {'left' : pct};
-          }
+          };
 
           makeclip.resetMarkers = function() {
             makeclip.markers[0].style = makeclip.markers[1].style = {'left' : '-6%'};
-          }
+          };
 
         }],
         controllerAs: "makeclip"
@@ -126,12 +122,11 @@
       return {
         restrict: 'E',
         templateUrl: "video-thumbs.html",
-        controller: ['videoInfo', function(videoInfo) {
+        controller: ['$scope','$rootScope','videoInfo', function($scope,$rootScope,videoInfo) {
           var thumbs = this;
           thumbs.clips = videoInfo.clips;
           thumbs.buttoncopy = videoInfo.videoThumbs.buttoncopy;
           thumbs.showData = false;
-          thumbs.selectAll = true;
         }],
         controllerAs: "thumbs"
       };
