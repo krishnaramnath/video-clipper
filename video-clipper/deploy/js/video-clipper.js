@@ -2,20 +2,6 @@
 (function(){
     var app = angular.module('video-directives', []);
 
-    app.directive('selectOnClick', ['$window', function ($window) {
-      return {
-        restrict: 'A',
-        link: function (scope, element, attrs) {
-            element.on('click', function () {
-                if (!$window.getSelection().toString()) {
-                    // Required for mobile Safari
-                    this.setSelectionRange(0, this.value.length)
-                };
-            });
-        }
-      };
-    }]);  
-    
     app.directive("videoMarkers", function() {
       return {
         restrict: 'E',
@@ -29,9 +15,6 @@
           markers.buttoncopy = videoInfo.videoMarkers.buttoncopy;
           markers.clips = videoInfo.clips;
           lgth = markers.clips.length;
-
-          /* temp */
-          videoInfo.clips[0].duration = 52.209;
 
           // position markers
           for (i=0; i<lgth; i++) {
