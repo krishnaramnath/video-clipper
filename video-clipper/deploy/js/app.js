@@ -125,17 +125,19 @@
         "tags": [],
         "style": {'left' : '-6%'}
       };
-      clipper.state = "make";
+
     };
 
     clipper.delete = function () {
       clipper.reset();
+
       // remove active clip
-      if (clipper.activeThumb > 0) {
+      if ((clipper.activeThumb > 0) && (clipper.state == 'edit')) {
         videoInfo.clips.splice(clipper.activeThumb, 1);
         clipper.activeThumb = 0;
       }
       clipper.scrollToTop();
+      clipper.state = "make";
     }
 
     clipper.errorCheck = function() {
@@ -144,6 +146,7 @@
         clipper.reset();
         clipper.isMakeclipOpen = false;
         clipper.scrollToTop();
+        clipper.state = "make";
       } 
     };
 
