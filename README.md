@@ -26,6 +26,7 @@ Mandatory Features
 
 
 Bonus (Completed)
+- The ability to automatically jump to the next clip after it finishes, with a 3 second waiting period and appropriate loading animation.
 
 - The ability to ‘save’ clips for persistent use.
 
