@@ -52,7 +52,7 @@
     }
   }]);
 
-  app.controller('ClipperController', ['$scope','$sce','$window','videoInfo', function($scope,$sce,$window,videoInfo){
+  app.controller("ClipperController", ['$scope','$sce','$window','videoInfo', function($scope,$sce,$window,videoInfo){
     var clipper = this;
     // set full video source and loading status
     clipper.srcfile = $sce.trustAsResourceUrl(videoInfo.srcfile);
@@ -62,30 +62,29 @@
     clipper.isMakeclipOpen = false;
     clipper.clips = videoInfo.clips;
     clipper.state = "player";
-    clipper.firstTime == true;
+    clipper.firstTime = true;
     clipper.fullvideo = document.getElementById('fullvideo');
     
     clipper.fullvideo.addEventListener('loadedmetadata', function (e) {
-      var fullvideo = clipper.fullvideo;
       clipper.loading = false;
       $scope.$apply();
-      // store full video duration
-      if (clipper.firstTime == true) {      
+      if (clipper.firstTime == true) {    
         clipper.firstTime = false;
+        // store full video duration
         videoInfo.clips[0].stop = videoInfo.clips[0].duration = clipper.fullvideo.duration;
       } else {
+        // if not initial load, play video upon loaded
         clipper.fullvideo.play();
       }
-      clipper.fullvideo.play();
     }.bind(clipper), false);
 
     clipper.fullvideo.addEventListener('timeupdate', function (e) {
       if (clipper.activeThumb > 0) {
         if (clipper.fullvideo.currentTime >= videoInfo.clips[clipper.activeThumb].stop) {
-          if ((this.playall == true) && (this.state == 'player' )) {
+          if ((clipper.playall == true) && (clipper.state == 'player' )) {
             var num = 0;
-            if (this.activeThumb < videoInfo.clips.length - 1) {
-              num = this.activeThumb + 1;
+            if (clipper.activeThumb < videoInfo.clips.length - 1) {
+              num = clipper.activeThumb + 1;
             } 
             var self = this;
             setTimeout(function() {self.setActive(num)}, 3000);
@@ -96,10 +95,10 @@
     }.bind(clipper), false);
 
     clipper.fullvideo.addEventListener('ended', function (e) {
-      if ((this.playall == true) && (this.state == 'player' )) {
+      if ((clipper.playall == true) && (clipper.state == 'player' )) {
         var num = 0;
-        if (this.activeThumb < videoInfo.clips.length - 1) {
-          num = this.activeThumb + 1;
+        if (clipper.activeThumb < videoInfo.clips.length - 1) {
+          num = clipper.activeThumb + 1;
         } 
         var self = this;
         setTimeout(function() {self.setActive(num)}, 3000);
@@ -150,7 +149,6 @@
 
     clipper.delete = function () {
       clipper.reset();
-
       // remove active clip
       if ((clipper.activeThumb > 0) && (clipper.state == 'edit')) {
         videoInfo.clips.splice(clipper.activeThumb, 1);
@@ -158,7 +156,7 @@
       }
       clipper.scrollToTop();
       clipper.state = "player";
-    }
+    };
 
     clipper.errorCheck = function() {
       // if not an error reset temp clip, close view
@@ -176,7 +174,7 @@
 
     clipper.scrollToTop = function() {
       $window.scrollTo(0, 0);
-    }
+    };
 
     clipper.setState = function(state) {
       clipper.state = state;
@@ -184,7 +182,7 @@
         //set temp clip to active clip
         clipper.tempClip = videoInfo.clips[clipper.activeThumb];
       }
-    }
+    };
     
   }]);
 
