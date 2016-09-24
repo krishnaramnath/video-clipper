@@ -6,15 +6,15 @@
       return {
         restrict: 'E',
         templateUrl: "video-markers.html",
-        controller: ['videoInfo', function(videoInfo) {
+        controller: ['$scope','videoInfo', function($scope,videoInfo) {
           var markers = this;
           markers.buttoncopy = videoInfo.videoMarkers.buttoncopy;
           markers.clips = videoInfo.clips;
-          lgth = markers.clips.length;
+          $scope.$on('initialload', markers.positionMarkers);
 
           markers.positionMarkers = function() {
             var i = 0,
-              lgth = "",
+              lgth = markers.clips.length,
               pct = "",
               mrkrCtrCorrect = 6;
             for (i=0; i<lgth; i++) {
@@ -23,8 +23,6 @@
             };
             markers.clips = videoInfo.clips;
           }
-
-          markers.positionMarkers();
         }],
         controllerAs: "markers"
       };
@@ -108,7 +106,7 @@
       return {
         restrict: 'E',
         templateUrl: "video-thumbs.html",
-        controller: ['$scope','$rootScope','videoInfo', function($scope,$rootScope,videoInfo) {
+        controller: ['videoInfo', function(videoInfo) {
           var thumbs = this;
           thumbs.clips = videoInfo.clips;
           thumbs.buttoncopy = videoInfo.videoThumbs.buttoncopy;

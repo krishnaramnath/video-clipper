@@ -72,6 +72,7 @@
         clipper.firstTime = false;
         // store full video duration
         videoInfo.clips[0].stop = videoInfo.clips[0].duration = clipper.fullvideo.duration;
+        $scope.$emit('initialload');
       } else {
         // if not initial load, play video upon loaded
         clipper.fullvideo.play();
