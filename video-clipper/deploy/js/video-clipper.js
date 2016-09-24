@@ -48,13 +48,18 @@
       return {
         restrict: 'E',
         templateUrl: "video-makeclip.html",
-        controller: ['videoInfo', function(videoInfo) {
+        controller: ['$scope','videoInfo', function($scope,videoInfo) {
           var makeclip = this;
           makeclip.mrkrCtrCorrect = 6;
           makeclip.buttoncopy = videoInfo.videoMakeclip.buttoncopy;
           makeclip.markers = videoInfo.videoMakeclip.markers;
           makeclip.fullvideo = document.getElementById('fullvideo');
           makeclip.error = false;
+
+          $scope.$on("updateMarkerPos", function() {
+            makeclip.updateMarkerPos(0);
+            makeclip.updateMarkerPos(1);
+          });
 
           makeclip.getTime = function() {
             return makeclip.fullvideo.currentTime;

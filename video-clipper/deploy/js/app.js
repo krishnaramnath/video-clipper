@@ -65,7 +65,6 @@
     clipper.fullvideo = document.getElementById('fullvideo');
 
     clipper.fullvideo.addEventListener('loadedmetadata', function (e) {
-      console.log('---- loaded ----');
       clipper.loading = false;
       $scope.$apply();
       // store full video duration
@@ -73,16 +72,13 @@
     }.bind(clipper), false);
 
     clipper.fullvideo.addEventListener('ended', function (e) {
-      console.log('---- ended ----');
-      console.log(clipper.playAll);
-      console.log('----');
       if (clipper.playAll == true) {
         var num = 0;
         if (clipper.activeThumb < videoInfo.clips.length) {
           num = clipper.activeThumb + 1;
         }
-        console.log('num: ' + num);
-        $scope.setActive(num);
+        clipper.setActive(num);
+        $scope.$apply();
       }
     }.bind(clipper), false);
 
@@ -105,7 +101,6 @@
     }
 
     clipper.setActive = function(num) {
-      console.log('setActive(' + num + ')');
       clipper.activeThumb = num;
       clipper.fullvideo.removeAttribute("src");
       clipper.fullvideo.load();
@@ -130,6 +125,7 @@
         "tags": [],
         "style": {'left' : '-6%'}
       };
+      clipper.state = "make";
     };
 
     clipper.delete = function () {
@@ -156,7 +152,6 @@
     };
 
     clipper.scrollToTop = function() {
-      console.log('clipper.scrollToTop');
       $window.scrollTo(0, 0);
     }
 
