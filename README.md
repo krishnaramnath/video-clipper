@@ -37,10 +37,11 @@ Bonus (Completed)
 - The ability to reuse the the player and playlist on another page without the editing capabilities.
 
 
-design.pdf contains wire-frames, brief software architecture notes, designs
+# installation:
 
-# installation notes
+- See /video-clipper/design.pdf for wire-frame, software architecture notes, and design docs
+- To run, install contents of /video-clipper/deploy/in root directory of web server and run /deploy/index.html
 
-***** video file in this example is .mp4; make sure server environment supports .mp4 video/mpeg MIME type and browser supports playback of .mp4 video files
+ ***** note: video file in this example is .mp4; make sure server environment supports .mp4 video/mpeg MIME type and browser supports playback of .mp4 video files
 
 
