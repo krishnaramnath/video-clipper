@@ -1,6 +1,6 @@
 # video-clipper
 
-Create an application that allows a user to slice­up a video (sample video:
+An application that allows a user to slice­up a video (sample video:
 
 http://grochtdreis.de/fuer­jsfiddle/video/sintel_trailer­480.mp4) into clips.
 
@@ -8,7 +8,7 @@ http://grochtdreis.de/fuer­jsfiddle/video/sintel_trailer­480.mp4) into clips.
 I used AngularJS to facilitate development:
 
 
-Mandatory Features
+Standard Features
 
 - An HTML5 video player that utilizes media fragments
 
@@ -25,7 +25,7 @@ Mandatory Features
 - The ability to play clips in the video player
 
 
-Bonus (Completed)
+Bonus Features 
 - The ability to automatically jump to the next clip after it finishes, with a 3 second waiting period and appropriate loading animation.
 
 - The ability to ‘save’ clips for persistent use.
