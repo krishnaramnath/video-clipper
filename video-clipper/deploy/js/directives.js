@@ -2,7 +2,7 @@
 (function(){
     var app = angular.module('video-directives', []);
 
-    app.directive("videoHolder", function() {
+    app.directive("videoPlayer", function() {
       return {
         restrict: 'E',
         templateUrl: "video-player.html",
@@ -11,10 +11,9 @@
           player.srcfile = $sce.trustAsResourceUrl(videoInfo.srcfile);
           player.firstTime = true;
           player.fullvideo = document.getElementById('fullvideo');
-          player.loading = true;
 
           player.fullvideo.addEventListener('loadedmetadata', function (e) {
-            player.loading = false;
+            videoInfo.loading = false;
             $scope.$apply();
             if (player.firstTime == true) {    
               player.firstTime = false;
@@ -59,7 +58,7 @@
             videoInfo.activeThumb = num;
             player.fullvideo.removeAttribute("src");
             player.fullvideo.load();
-            player.loading = true;
+            videoInfo.loading = true;
             player.srcfile = $sce.trustAsResourceUrl(videoInfo.srcfile.concat('#t=' +  videoInfo.clips[num].start+','+videoInfo.clips[num].stop));
             player.fullvideo.getElementsByTagName('source')[0].setAttribute('src', player.srcfile);
             player.fullvideo.load();

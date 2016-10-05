@@ -6,6 +6,7 @@
       "activeThumb" : 0,
       "playall" : false,
       "state" : "player",
+      "loading" : true,
       "videoMarkers" : {
         "buttoncopy" : [
           "make clip",
@@ -80,7 +81,7 @@
     };
 
     clipper.isLoading = function() {
-      return clipper.loading;
+      return videoInfo.loading;
     }
 
     clipper.reset = function () {
