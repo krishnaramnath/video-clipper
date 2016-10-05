@@ -2,7 +2,7 @@
   <form ng-hide="!thumbs.showData && clipper.clips.length == 1" id="form3" name="form3">
     <label>
       {{thumbs.buttoncopy[0]}}
-      <input type="checkbox" name="playall" ng-model="clipper.playall" >
+      <input type="checkbox" name="playall" ng-model="thumbs.playall" ng-click="thumbs.updatePlayall();">
     </label>
   </form>
   <ul>
