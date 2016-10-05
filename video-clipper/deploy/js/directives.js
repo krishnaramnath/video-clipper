@@ -5,15 +5,13 @@
     app.directive("videoHolder", function() {
       return {
         restrict: 'E',
-        templateUrl: "video-holder.html",
+        templateUrl: "video-player.html",
         controller: ['$scope','$sce','videoInfo', function($scope,$sce,videoInfo) {
           player = this;
           player.srcfile = $sce.trustAsResourceUrl(videoInfo.srcfile);
           player.firstTime = true;
           player.fullvideo = document.getElementById('fullvideo');
           player.loading = true;
-
-          $scope.$on('setActive', function(e,num) {player.setActive(num)});
 
           player.fullvideo.addEventListener('loadedmetadata', function (e) {
             player.loading = false;
@@ -66,6 +64,10 @@
             player.fullvideo.getElementsByTagName('source')[0].setAttribute('src', player.srcfile);
             player.fullvideo.load();
           };
+
+          player.setActive(0);
+          $scope.$on('setActive', function(e,num) {player.setActive(num)});
+
         }],
         controllerAs: "player"
       };

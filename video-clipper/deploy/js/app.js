@@ -55,9 +55,9 @@
     }
   }]);
 
-  app.controller("ClipperController", ['$scope','$window','videoInfo', function($scope,$window,videoInfo){
+  app.controller("ClipperController", ['$scope','$sce','$window','videoInfo', function($scope,$sce,$window,videoInfo){
     var clipper = this;
-    // set full video source and loading status
+    clipper.srcfile = $sce.trustAsResourceUrl(videoInfo.srcfile);
     clipper.isMakeclipOpen = false;
     clipper.clips = videoInfo.clips;
     
